@@ -25,9 +25,6 @@ int main() {
 
 	polyappend(&p1, 1, 7);
 	polyappend(&p1, 2, 6);
-	polyappend(&p1, 3, 5);
-	polyappend(&p1, 4, 4);
-	polyappend(&p1, 5, 2);
 
 	display(p1);
 
@@ -35,9 +32,6 @@ int main() {
 
         polyappend(&p2, 1, 7);
         polyappend(&p2, 2, 6);
-        polyappend(&p2, 3, 5);
-        polyappend(&p2, 4, 4);
-        polyappend(&p2, 5, 2);
 
 	display(p2);
 
