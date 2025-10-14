@@ -9,6 +9,10 @@ int isGreater(char*, char*);
 char* getSub(char*, int, int);
 char* leftSub(char*, int);
 char* rightSub(char*, int);
+void lower(char*);
+void upper(char*);
+void reverse(char*);
+int replace(char*, char, char);
 
 int main() {
 	char s1[] = "Hello";
@@ -62,6 +66,20 @@ int main() {
 
 	s = rightSub(s3, 10);
         printf("\nRight Most String: %s\n", s);
+
+	upper(s3);
+	printf("\nString in upper case: %s", s3);
+
+	lower(s3);
+	printf("\nString in lower case: %s", s3);
+
+	reverse(s3);
+	printf("\nString in reversed form: %s\n", s3);
+
+	if (replace(s3, 'f', 'z'))
+		printf("\n%s", s3);
+	else
+		printf("\nNot possible");
 
 	return 0;
 }
@@ -163,4 +181,56 @@ char* rightSub(char *str, int n) {
 	*t = '\0';
 	t = a;
 	return t;
+}
+
+void upper(char *s) {
+	while (*s) {
+		if (*s >= 97 && *s <= 123)
+			*s -= 32;
+		s++;
+	}
+}
+
+void lower(char *s) {
+	while (*s) {
+		if (*s >= 65 && *s <= 91)
+			*s += 32;
+		s++;
+	}
+}
+
+void reverse(char *str) {
+	int l = strlen(str);
+	char ch;
+	char *t = str + l - 1;
+	int i = 0;
+
+	while (i < l/2) {
+		ch = *str;
+		*str = *t;
+		*t = ch;
+
+		str++;
+		t--;
+		i++;
+	}
+}
+
+int replace(char *str, char oldch, char newch) {
+	while (*str) {
+		if (*str == oldch) {
+			*str = newch;
+			return 1;
+		}
+		str++;
+	}
+	return 0;
+}
+
+int setat(char *str, char ch, int i) {
+	if (i < 0 || strlen(str) < i) {
+		return 0;
+	}
+	*(str + i) = ch;
+	return 1;
 }
