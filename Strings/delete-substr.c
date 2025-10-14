@@ -8,7 +8,7 @@
 int main() {
 	char *str = (char *) malloc(sizeof(char) * MAXLINE);
 	char *substr = (char *) malloc(sizeof(char) * MAXLINE);
-	int i;
+	int i, j;
 	printf("\nEnter the string: ");
 	fgets(str, MAXLINE, stdin);
 	str[strcspn(str, "\n")] = '\0';
@@ -33,12 +33,11 @@ int main() {
 	}
 	printf("\n%d\n", i);
 
-	for (int j = (i + strlen(substr)); j > i; j--) {
-		str[j-1] = str[j];
+	for (j = i; j <= (strlen(str) - strlen(substr)); j++) {
+		str[j] = str[j + strlen(substr)];
 	}
-	
-	for (int k = 0; k < strlen(str) - strlen(substr); k++)
-		printf("%c", str[k]);
+	//str[j] = '\0';
+	printf("%s", str);
 
 	return 0;
 }
