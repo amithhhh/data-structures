@@ -7,6 +7,8 @@ int isEquals(char*, char*);
 int isSmaller(char*, char*);
 int isGreater(char*, char*);
 char* getSub(char*, int, int);
+char* leftSub(char*, int);
+char* rightSub(char*, int);
 
 int main() {
 	char s1[] = "Hello";
@@ -33,6 +35,33 @@ int main() {
 		printf("\n They are identical");
 	else
 		printf("\n 404 Error not match");
+	
+	i = isSmaller(s1, s2);
+
+	if (i == 1)
+		printf("\n String s1 is smaller than string s2");
+	else
+		printf("\n String s1 is not smaller than string s2");
+
+	i = isGreater(s1, s2);
+
+        if (i == 1)
+                printf("\n String s1 is greater than string s2");
+        else
+                printf("\n String s1 is not greater than string s2");
+
+	printf("\nString 3: %s", s3);
+
+	s = getSub(s3, 5, 7);
+
+	printf("\nSub string: %s\n", s);
+	//free(s);
+	
+	s = leftSub(s3, 10);
+	printf("\nLeft Most String: %s\n", s);
+
+	s = rightSub(s3, 10);
+        printf("\nRight Most String: %s\n", s);
 
 	return 0;
 }
@@ -56,4 +85,82 @@ int isEquals(char *s, char *t) {
 		t++;
 	}
 	return 1;
+}
+
+int  isSmaller(char *s, char *t) {
+	while (*t) {
+		if (*s != *t) {
+			if (*s < *t)
+				return 1;
+			else
+				return 0;
+		}
+		t++;
+		s++;
+	}
+	return 0;
+}
+
+int isGreater(char *s, char *t) {
+	while (*t) {
+		if (*s != *t) {
+			if (*s > *t) 
+				return 1;
+			else
+				return 0;
+		}
+		s++;
+		t++;
+	}
+	return 0;
+}
+
+
+char* getSub(char *s, int spos, int n) {
+	int i = 0;
+	char *str = s + spos;
+	char *t = (char *) malloc(n + 1);
+
+	while (i < n) {
+		t[i] = *str;
+		str++;
+		i++;
+	} 
+	t[i] = '\0';
+	return t;
+}
+
+char* leftSub(char *s, int n) {
+	char *t = (char *) malloc(n + 1);
+	int i = 0;
+	char *a;
+	a = t;
+
+	while (i < n) {
+		*t = *s;
+		t++;
+		s++;
+		i++;
+	}
+	*t = '\0';
+	t = a;
+	return t;
+}
+
+char* rightSub(char *str, int n) {
+	char *t = (char *) malloc(n + 1);
+	int l = strlen(str);
+	char *a;
+	char *s = str + (l - n);
+	a = t;
+	int i = 0;
+	while (i < n) {
+		*t = *s;
+		s++;
+		t++;
+		i++;
+	}
+	*t = '\0';
+	t = a;
+	return t;
 }
