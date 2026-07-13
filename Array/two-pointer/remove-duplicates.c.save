@@ -1,0 +1,17 @@
+/*
+3️⃣ Remove Duplicates from Sorted Array
+
+Problem:
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.
+
+Return the number of unique elements k.
+
+The first k elements of nums should contain the unique elements in the original order.
+
+Constraints:
+
+1 ≤ nums.length ≤ 3 * 10^4
+*/
+
+
+#include <stdio.h>
